@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Photos{% endblock %}
+
+{% block body %}
+    <hr>
+    <h1>Ajoute ton image :</h1>
+    {{ form_start(formulaire, {"action": path("new_photos")}) }}
+
+
+
+    {{ form_widget(formulaire.imageFile) }}
+
+    <button type="submit" class="btn btn-success">Créer</button>
+
+    {{ form_end(formulaire) }}
+    <hr>
+    
+    <h1>Vos Photos :</h1>
+
+    {% for photo in photos %}
+        <hr>
+        <p><img src="{{ vich_uploader_asset(photo, 'imageFile') }}" style="width: 150px" alt=""></p>
+        <hr>
+
+    {% endfor %}
+    
+{% endblock %}
